@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title> Product view </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="Todo">
+  <meta name="description" content="An application to store task">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/fonts/flat-icon/flaticon.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/jquery-3.2.1.min.js"></script>
+  <style>
+    /* table, th, td {
+  border: 1px solid lightgray;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+th{
+  background-color: #4CAF50;
+  color: white;
+    text-align: center;
+} */
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  /* z-index: 1; */
+  margin: 0;
+  padding: 0;
+  background-color: rgb(41, 35, 54);
+  overflow: auto;
+  
+}
+
+.sidebar a {
+  padding: 16px;
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.sidebar a:hover {
+  color:tomato;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px; /* Same as the width of the sidenav */
+}
+@media screen and (max-width: 700px) {
+  .sidebar {width:100%; height: auto; position:relative; }
+  .sidebar a { float: left;}
+  div.content {margin-left: 0;}
+}
+
+
+@media screen and (max-width: 400px) {
+  /* .sidenav {padding-top: 15px;} */
+  .sidebar a { text-align:center; float: none;}
+}  </style>
+</head>
+
+<body style="border-color: #7c7c7c;">
+<!-- new nav -->
+<nav class="navbar navbar-expand-sm bg-light navbar-light sticky-top">
+  <a href="#" class="navbar-brand"> Property Inventory </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+    
+      </ul>
+  </div>
+  <form class="form-inline" >
+    
+      <input type="text" class="form-control mr-sm-2" placeholder="Search" >
+      <button type="button" class="btn btn-success">Search</button>
+  </form>
+</nav>
+
+<!-- end nav -->
+
+
+<div class="sidebar">
+  <a class="active" href="/"> Dashboard </a>
+  <a href="/product/add">Add new shoes</a>
+  <a href="/product/show"> View product</a>
+  <a href="#"> About </a>
+</div>
+           
+
+  <div class="content">
+
+  <div class="container main">
+    <h1 style="text-align: center; color:rgb(11, 11, 78)"> VIEW PRODUCTS </h1>
+
+
+    <div class="container">
+      <div class="row">
+        <% response.forEach((product)=> { %>
+        <div class="col-md-4 column" style="text-align: center;">
+          <p> <img width="200px" height="200px" src="<%=locals.filepath%>uploads/<%=product.photo%>" alt="snicker"> </p>
+          <p> <%=product.name %></p>
+          <p> <%=product.price %></p>
+          <button class="btn btn-warning productDelete" style="margin-bottom: 5px;" productid="<%=product._id%>"> Remove </button>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+</body>
+<script>
+  $(document).ready(() => {
+    $('.productDelete').click( function() {
+      alert("button clicked")
+      var productID = $(this).attr('productid');
+
+      $.post('/deleteprd', { "prodID": productID }, (response) => {
+          console.log(response);
+        if (response["code"] == 1) {
+          location.reload();
+        }
+      })
+    })
+  })
+</script>
+
+</html>

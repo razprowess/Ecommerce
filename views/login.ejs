@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Log in page </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Todo">
+    <meta name="description" content="An application to store task">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+<style>
+    body{
+    background-image: url('./assets/images/web.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+
+</style>
+</head>
+
+<body>
+    <div class="main-content" style="margin-top: 200px;">
+
+        <form action="/account/login" method="post">
+            <div class="container">
+                <h4 style="text-align: center; color: blue;"> Enter your login detail to access your account</h4>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <label for="username"> Username: </label>
+                        <input type="text" name="username" id="username" placeholder=" enter your Username"
+                            class="form-control">
+
+                        <label for="password"> Password: </label>
+                        <input type="password" name="password" id="password" placeholder=" enter your Password"
+                            class="form-control">
+
+                        <br>
+                        <button type="submit" class="btn btn-primary" style="width:100%"> Sumbit </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

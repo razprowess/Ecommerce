@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Enter properties </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Todo">
+    <meta name="description" content="An application to store task">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+<style>
+    .sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(41, 35, 54);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color:tomato;
+}
+
+.main {
+  margin-left: 250px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.bnt a:hover{
+    color: blue;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <a href="/view">View Properties</a>
+        <a href="/properties">Enter properties</a>
+        <a href="/product/add">Add new shoes</a>
+        <a href="/product/show">Contact</a>
+      </div>
+      
+      <!-- <div class="main">
+        <h2>Sidenav Example</h2>
+        <p>This sidenav is always shown.</p>
+      </div> -->
+         
+      
+    <div class="main-content" style="margin-top: 100px;">
+
+        <form action="/properties/" method="post">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <h2 class="text text-primary"> Enter your infomation below to document your properties </h2>
+                        <div class="form-group">
+                            <label for="property"> Property name: </label>
+                            <input type="text" class="form-control" name="property" id="property"
+                                placeholder=" enter the property name">
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label for="description"> Property description: </label>
+                            <textarea class="form-control" name="description" id="description" rows="10" cols="120"
+                                placeholder="enter the property description here"> </textarea>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-lg"> submit </button>
+                        <div style="padding-left:15px; display: inline;" >
+                        <!-- <button type="button" class="btn btn-primary bnt" ><a href="/view" style="color: white;"> View
+                                properties </a></button></div>
+                    </div> -->
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

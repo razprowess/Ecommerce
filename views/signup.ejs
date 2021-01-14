@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> signup </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Todo">
+    <meta name="description" content="An application to store task">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+<style>
+    body{
+    background-image: url('./assets/images/web.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+
+.main{ 
+     padding-top: 10px;
+     padding-left: 20px;
+     padding-right: 20px;
+     padding-bottom: 15px;
+     margin-top: 10px;
+    margin-right: 300px;
+    background-color:rgb(41, 35, 54);
+} 
+
+label{
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="main-content" style="margin-top: 100px;">
+    <form action="/account/register" method="post">
+  <% if(locals.errmsg){ %>
+
+  
+<div class="alert alert-warning" style="text-align: center;"> <%= errmsg %> </div> <% } %>
+        <div class="container">
+            <h4 style="text-align: center; padding-bottom: 15px; font-weight: bold; color:black"> Enter your infomation below to register </h4>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 main">
+                    <div class="form-group">
+                    <label for="firstname"> First name: </label>
+                    <input type="text" name="firstname" id="firstname" placeholder=" enter your firstname"
+                        class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                    <label for="username"> Username: </label>
+                    <input type="text" name="username" id="username" placeholder=" enter your Username"
+                        class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                    <label for="password"> Password: </label>
+                    <input type="password" name="password" id="password" placeholder=" enter your Password"
+                        class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                    <label for="confirmpassword"> Confirm password: </label>
+                    <input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirm your passowrd"
+                        class="form-control">
+                    </div>
+                    <br>
+                    <button type="submit" class="form-control btn btn-primary"> Submit </button> 
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

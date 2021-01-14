@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Enter properties </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Todo">
+    <meta name="description" content="An application to store task">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+<style>
+
+  body {
+    background-color: #ebe5e5;
+  }
+    .sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  /* z-index: 1; */
+  margin: 0;
+  padding: 0;
+  background-color: rgb(41, 35, 54);
+  overflow: auto;
+  
+}
+
+.sidebar a {
+  padding: 16px;
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.sidebar a:hover {
+  color:tomato;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px; /* Same as the width of the sidenav */
+}
+@media screen and (max-width: 700px) {
+  .sidebar {width:100%; height: auto; position:relative; }
+  .sidebar a { float: left;}
+  div.content {margin-left: 0;}
+}
+
+
+@media screen and (max-width: 400px) {
+  /* .sidenav {padding-top: 15px;} */
+  .sidebar a { text-align:center; float: none;}
+}
+.bnt a:hover{
+    color: blue;
+}
+</style>
+</head>
+
+<body>
+
+  <div class="sidebar">
+    <a class="active" href="/"> Dashboard </a>
+    <a href="/product/add">Add new shoes</a>
+    <a href="/product/show"> View product</a>
+    <a href="#"> About </a>
+  </div>
+             
+
+    <div class="content">
+
+        <form action="/product/upload" method="post" enctype="multipart/form-data">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-3 "></div>
+                    <div class="col-md-6">
+                        <h3 class="text text-primary" style="text-align:center;"> Enter your infomation below to add new shoes </h3>
+                        <div class="form-group">
+                            <label for="property"> shoe name: </label>
+                            <input type="text" class="form-control" name="shoe" id="property"
+                                placeholder=" enter the shoe name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price"> shoe price: </label>
+                            <input type="number" class="form-control" name="price" id="price"
+                                placeholder=" enter the price of the shoe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description"> Shoe description(optional): </label>
+                            <textarea class="form-control" name="description" id="description" rows="5" cols="120"
+                                placeholder="enter a short description of the shoe here"> </textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="file"> Upload Image: </label>
+                            <input type="file" class="form-control" accept="image/*" name="photo" id="file">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg"> submit </button>
+                        <div style="padding-left:15px; display: inline;" >
+                        <!-- <button type="button" class="btn btn-primary bnt" ><a href="/view" style="color: white;"> View
+                                properties </a></button></div>
+                    </div> -->
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

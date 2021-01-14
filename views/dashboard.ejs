@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title> Dashboard </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="Todo">
+  <meta name="description" content="An application to store task">
+  <link rel="stylesheet" href="/assets/fontawesome/css/fontawesome.css">
+  <link rel="stylesheet" href="/assets/fontawesome/css/solid.css">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/assets/fonts/flat-icon/flaticon.css"> -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <script src="/assets/js/jquery-3.2.1.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <style>
+    body {
+  overflow-x: hidden; 
+}
+    .contents {
+      padding: 5px;
+    }
+
+    .column:hover {
+      background-color: rgb(184, 66, 11);
+    }
+
+    /* .sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(41, 35, 54);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color:tomato;
+} */
+
+    /* .main {
+  margin-left: 235px; /* Same as the width of the sidenav */
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a href="#" class="navbar-brand"> Product Catalog </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="cart/" class="nav-link"> <i class="fa fa-cart-plus"></i> cart</a>
+            </li>
+        </ul>
+    </div>
+
+    <form class="form-inline" >
+      <a href="/login" class="nav-link nav-dark" style="border-radius: 5px;  margin-right: 10px">Login</a>
+        <input type="text" class="form-control mr-sm-2" placeholder="Search" >
+        <button type="button" class="btn btn-success mt-1">Search</button>
+    </form>
+
+</nav>
+  <!-- nav readjustment -->
+    <!-- alert div -->
+    <div class="alert alert-success" id="signal" style="display:none; text-align: center;"> product added successfully </div>
+    <!-- end alert div -->
+
+  <div class="main" style="margin-top: 50px;">
+    <h1 style="text-align: center; color:rgb(11, 11, 78)"> VIEW PRODUCTS </h1>
+
+    <div class="contents">
+      <div class="row">
+        <% response.forEach((product)=> { %>
+        <div class="col-md-4 column" style="text-align: center;">
+          
+          <p style="font-weight: bolder;" class="pname"> <%=product.name %></p>
+          <p> <img width="200px" height="200px" src="<%=locals.filepath%>uploads/<%=product.photo%>" alt="snicker"> </p>
+          
+          <section>
+            <p style="display: inline; padding-right: 35px;"> $<%=product.price %>
+            </p>
+            <button type="button" class="btn btn-primary buttonCart" style="margin-bottom: 5px;" productid="<%=product._id%>"> Add to cart </button>
+          </section>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+
+    <div class="cart-section bg-light mt-4" >
+      <h3 style="text-align: center;"> CART</h3>
+      <table>
+        <thead>
+          <tr>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <td></td>
+        </tbody>
+      </table>
+      <a href="cart/"> View cart </a> 
+    </div>
+
+  </div>
+    
+</body>
+<script>
+
+  $(document).ready(() => {
+    
+  
+  $('.buttonCart').click(function () {
+    
+let productid = $(this).attr('productid');
+
+
+let productName = $(this).parent().parent().find(".pname").text();
+
+    $.post("/cart/addtocart", {"prdID": productid}, (response) => {
+if (response.code == 1) {
+  $("#signal").css("display", "block");
+  setTimeout(function(){
+            location.reload();
+           }, 2000); 
+}
+    });
+  });
+  
+  })
+  </script>
+</html>
